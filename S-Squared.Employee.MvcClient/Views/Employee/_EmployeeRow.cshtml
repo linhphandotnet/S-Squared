@@ -1,0 +1,18 @@
+﻿@using S_Squared.EmployeeClient.Models;
+@model List<Employee>;
+
+@foreach(var item in Model)
+{
+    <tr>
+        <td>@item.EmployeeId</td>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.IsManager</td>
+        <td>
+            <div class="btn-group">
+                <button class="btn-primary btn-sm btn-edit" data-id="@item.Id" onclick="alert('Todo task')">Edit</button>
+                <button class="btn-warning btn-sm btn-delete" data-id="@item.Id" onclick="alert('Todo task')">Delete</button>
+            </div>
+        </td>
+    </tr>
+}

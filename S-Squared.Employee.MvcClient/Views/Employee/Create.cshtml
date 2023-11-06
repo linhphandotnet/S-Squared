@@ -1,0 +1,91 @@
+﻿@model S_Squared.EmployeeClient.Models.Employee
+<form asp-action="Create" asp-controller="Employee">
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h3>Create Employee</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="ManagerId" class="control-lable"></label>
+                                @Html.DropDownListFor(m=> m.ManagerId, Model.SelectManagers,"Select Manager", new { @class="form-control"})
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="text-danger">*</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="EmployeeId" class="control-lable"></label>
+                            <input asp-for="EmployeeId" class="form-control" type="text" />
+                            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="text-danger">*</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-lable"></label>
+                            <input asp-for="FirstName" class="form-control" type="text" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="text-danger">*</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-lable"></label>
+                            <input asp-for="LastName" class="form-control" type="text" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="text-danger">*</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-check">
+                            <label asp-for="IsManager" class="control-lable"></label>
+                            <input asp-for="IsManager" class="form-check-input" type="checkbox" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label asp-for="SelectRoles" class="control-lable"></label>
+                                @Html.ListBoxFor(m=> m.SelectedRoles, Model.SelectRoles, new { multiple = true, @class="form-select"})
+@*                             <select class="form-select" multiple asp-for="SelectedRoles">
+                                @foreach (var option in Model.Roles)
+                                {
+                                    <option value="@option.Id">@option.RoleName</option>
+                                }
+                            </select>
+ *@                        </div>
+                            <span asp-validation-for="SelectedRoles" class="text-danger"></span>
+                        </div>
+                    <div class="col-md-2">
+                        <span class="text-danger">*</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" class="btn btn-primary btn-save" asp-action="Create" asp-controller="Employee" value="Save"/>
+            <a class="btn btn-danger" asp-action="Index" asp-controller="Employee">Cancel</a>
+        </div>
+    </div>
+</div>
+</form>

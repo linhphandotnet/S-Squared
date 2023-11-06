@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "S-Squared Enterprises";
+
+}
+@model S_Squared.EmployeeClient.ViewModels.EmployeeViewModel;
+<div class="row">
+<div class="card">
+    <div class="card-header">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label>Manager</label>
+                    <select class="custom-select form-control-border" id="selectedManager">
+                        <!option value="0">-- Select Manager --</!option>
+                        @foreach (var manager in Model.Managers)
+                        {
+                            <!option value="@manager.Id">@manager.FirstName @manager.LastName</!option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="tblEmployee" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <partial name="_EmployeeRow" model=Model.Employees />
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <div class="text-right">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Employee">Create Employee</a>
+        </div>
+    </div>
+    </div>
+</div>
