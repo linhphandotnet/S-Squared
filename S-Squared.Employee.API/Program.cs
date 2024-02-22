@@ -1,7 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using S_Squared.EmployeeAPI.Infrastructure;
-using S_Squared.EmployeeAPI.Infrastructure.Data;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +27,14 @@ builder.Services.AddEntityFrameworkSqlServer()
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
+builder.Services.AddCors(options => options.AddPolicy("cors", opt =>
+{
+    opt.AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin();
+
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,6 +59,38 @@ using (var scope = app.Services.CreateScope())
 
     new SeedData().SeedDataAsync(dataContext, log).Wait();
 }
+app.UseCors("cors");
+
+app.MapGet("/api/roles", async (IRoleRepository roleProvider) => {
+    var provider = roleProvider;
+    return await provider.GetAll();
+});
+
+app.MapGet("/api/roles/role/id/{id:int}", async (int id, IRoleRepository roleProvider) => {
+    var provider = roleProvider;
+    return await provider.GetById(id);
+});
+
+app.MapPost("/api/roles", async (Role model, IRoleRepository roleProvider) =>
+{
+    var provider = roleProvider;
+    provider.CreateRole(model);
+    return await provider.SaveChangeAsync();
+});
+
+app.MapPut("/api/roles", async (Role model, IRoleRepository roleProvider) =>
+{
+    var provider = roleProvider;
+    provider.UpdateRole(model);
+    return await provider.SaveChangeAsync();
+});
+
+app.MapDelete("/api/roles/id/{id:int}", async (int id, IRoleRepository roleProvider) =>
+{
+    var provider = roleProvider;
+    provider.DeleteRole(id);
+    return await provider.SaveChangeAsync();
+});
 
 app.Run();
 
