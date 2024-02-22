@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let empl of empdata">
+    <tr>
+      <td>{{empl.employeeId}}</td>
+      <td>{{empl.firstName}}</td>
+      <td>{{empl.lastName}}</td>
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-sm" onclick="alert('Todo task')">Edit</button>
+          <button class="btn btn-warning btn-sm" onclick="alert('Todo task')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
