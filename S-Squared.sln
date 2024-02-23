@@ -11,6 +11,10 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "S-Squared.SpaClient", "S-Sq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S-Squared.Data", "S-Squared.Data\S-Squared.Data.csproj", "{2576BC50-EE23-4854-9270-F29056E7BB38}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B9BBB634-F0DF-4F6C-8897-2C72400D007A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{A077389C-395F-4FBC-988F-0776156F2E52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1960930C-440F-4AC2-A7A0-952C27753C18} = {B9BBB634-F0DF-4F6C-8897-2C72400D007A}
+		{AAFBC863-B7EE-4E96-A590-5A00FA8A517D} = {A077389C-395F-4FBC-988F-0776156F2E52}
+		{BC2A8628-82AD-407C-9801-0C7F5EC3E78B} = {A077389C-395F-4FBC-988F-0776156F2E52}
+		{2576BC50-EE23-4854-9270-F29056E7BB38} = {B9BBB634-F0DF-4F6C-8897-2C72400D007A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8653EDF0-986D-4938-9CFA-FD504B7ED243}
