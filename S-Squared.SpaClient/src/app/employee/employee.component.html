@@ -8,7 +8,7 @@
         <label>Manager</label>
       </div>
       <div class="col-md-10">
-        <select class="form-control" style="width: 80%;" (change)="managerOnChange('@event')">
+        <select class="form-control" style="width: 80%;" (change)="managerOnChange($event)">
           <option>----- Select Manager-----</option>
           <option *ngFor="let emp of managers" value="{{emp.id}}">{{emp.firstName}} {{emp.lastName}}</option>
         </select>
